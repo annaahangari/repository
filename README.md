@@ -60,3 +60,21 @@ function increment() public {
 contract.on("CountIncremented", (caller, newCount) => {
   document.getElementById("count").innerText = newCount;
 });
+
+### Adding Owner Control
+
+```solidity
+address public owner;
+
+constructor() {
+    owner = msg.sender;
+}
+
+modifier onlyOwner() {
+    require(msg.sender == owner, "Not owner");
+    _;
+}
+
+function reset() public onlyOwner {
+    count = 0;
+}
