@@ -53,3 +53,10 @@ function increment() public {
     count += 1;
     emit CountIncremented(msg.sender, count);
 }
+
+### Listening to Events in Frontend
+
+```javascript
+contract.on("CountIncremented", (caller, newCount) => {
+  document.getElementById("count").innerText = newCount;
+});
