@@ -9,3 +9,9 @@ Goal: Build knowledge, practice Solidity, and explore the ecosystem step by step
 Base is Coinbase's Ethereum Layer 2 blockchain. It offers fast transactions and very low fees while inheriting Ethereum's security.
 
 I'm using this repo to document my learning journey and practice building on it.
+
+### First Steps with Solidity on Base
+
+I'm starting to learn Solidity to build smart contracts that can be deployed on Base.
+
+Low fees make it perfect for testing and experimenting without high costs.
