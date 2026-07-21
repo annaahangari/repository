@@ -169,3 +169,12 @@ function getContractBalance() public view returns (uint256) {
     return address(this).balance;
 }
 
+### Renounce Ownership
+
+```solidity
+function renounceOwnership() public onlyOwner {
+    owner = address(0);
+    emit OwnershipRenounced(msg.sender);
+}
+
+event OwnershipRenounced(address previousOwner);
