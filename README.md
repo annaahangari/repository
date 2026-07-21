@@ -15,3 +15,21 @@ I'm using this repo to document my learning journey and practice building on it.
 I'm starting to learn Solidity to build smart contracts that can be deployed on Base.
 
 Low fees make it perfect for testing and experimenting without high costs.
+
+### Simple Counter Contract
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Counter {
+    uint256 public count = 0;
+
+    function increment() public {
+        count += 1;
+    }
+
+    function getCount() public view returns (uint256) {
+        return count;
+    }
+}
