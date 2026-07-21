@@ -145,3 +145,12 @@ receive() external payable {
 }
 
 event FundsReceived(address sender, uint256 amount);
+
+### Fallback Function
+
+```solidity
+fallback() external payable {
+    emit FallbackCalled(msg.sender, msg.value, msg.data);
+}
+
+event FallbackCalled(address sender, uint256 value, bytes data);
