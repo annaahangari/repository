@@ -178,3 +178,12 @@ function renounceOwnership() public onlyOwner {
 }
 
 event OwnershipRenounced(address previousOwner);
+
+### Version Function
+
+```solidity
+string public version = "1.0";
+
+function getVersion() public view returns (string memory) {
+    return version;
+}
