@@ -33,3 +33,13 @@ contract Counter {
         return count;
     }
 }
+
+### Simple Frontend for Counter Contract
+
+```html
+<button onclick="increment()">Increment</button>
+<p>Count: <span id="count">0</span></p>
+
+<script>
+  // Connect to contract on Base and call increment()
+</script>
