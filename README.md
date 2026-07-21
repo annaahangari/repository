@@ -86,3 +86,13 @@ function transferOwnership(address newOwner) public onlyOwner {
     require(newOwner != address(0), "Invalid owner");
     owner = newOwner;
 }
+
+### Event for Ownership Transfer
+
+```solidity
+event OwnershipTransferred(address previousOwner, address newOwner);
+
+function transferOwnership(address newOwner) public onlyOwner {
+    emit OwnershipTransferred(owner, newOwner);
+    owner = newOwner;
+}
