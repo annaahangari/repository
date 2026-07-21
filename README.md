@@ -136,3 +136,12 @@ function getPausedStatus() public view returns (bool) {
 function getOwner() public view returns (address) {
     return owner;
 }
+
+### Receive Function
+
+```solidity
+receive() external payable {
+    emit FundsReceived(msg.sender, msg.value);
+}
+
+event FundsReceived(address sender, uint256 amount);
