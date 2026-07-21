@@ -125,3 +125,14 @@ function pause() public onlyOwner {
     paused = true;
     emit Paused(msg.sender);
 }
+
+### Useful View Functions
+
+```solidity
+function getPausedStatus() public view returns (bool) {
+    return paused;
+}
+
+function getOwner() public view returns (address) {
+    return owner;
+}
