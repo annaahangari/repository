@@ -96,3 +96,21 @@ function transferOwnership(address newOwner) public onlyOwner {
     emit OwnershipTransferred(owner, newOwner);
     owner = newOwner;
 }
+
+### Pause Functionality
+
+```solidity
+bool public paused = false;
+
+modifier whenNotPaused() {
+    require(!paused, "Contract is paused");
+    _;
+}
+
+function pause() public onlyOwner {
+    paused = true;
+}
+
+function unpause() public onlyOwner {
+    paused = false;
+}
