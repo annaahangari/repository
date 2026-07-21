@@ -78,3 +78,11 @@ modifier onlyOwner() {
 function reset() public onlyOwner {
     count = 0;
 }
+
+### Transfer Ownership
+
+```solidity
+function transferOwnership(address newOwner) public onlyOwner {
+    require(newOwner != address(0), "Invalid owner");
+    owner = newOwner;
+}
