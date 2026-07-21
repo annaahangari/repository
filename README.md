@@ -161,3 +161,11 @@ event FallbackCalled(address sender, uint256 value, bytes data);
 function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
     return interfaceId == type(IERC721).interfaceId || super.supportsInterface(interfaceId);
 }
+
+### Get Contract Balance
+
+```solidity
+function getContractBalance() public view returns (uint256) {
+    return address(this).balance;
+}
+
