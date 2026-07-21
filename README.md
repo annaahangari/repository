@@ -154,3 +154,10 @@ fallback() external payable {
 }
 
 event FallbackCalled(address sender, uint256 value, bytes data);
+
+### ERC165 supportsInterface
+
+```solidity
+function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
+    return interfaceId == type(IERC721).interfaceId || super.supportsInterface(interfaceId);
+}
