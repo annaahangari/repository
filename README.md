@@ -114,3 +114,14 @@ function pause() public onlyOwner {
 function unpause() public onlyOwner {
     paused = false;
 }
+
+### Events for Pause/Unpause
+
+```solidity
+event Paused(address account);
+event Unpaused(address account);
+
+function pause() public onlyOwner {
+    paused = true;
+    emit Paused(msg.sender);
+}
