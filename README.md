@@ -43,3 +43,13 @@ contract Counter {
 <script>
   // Connect to contract on Base and call increment()
 </script>
+
+### Adding Events to Counter
+
+```solidity
+event CountIncremented(address caller, uint256 newCount);
+
+function increment() public {
+    count += 1;
+    emit CountIncremented(msg.sender, count);
+}
