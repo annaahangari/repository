@@ -215,3 +215,10 @@ function getContractBalance() public view returns (uint256) {
 function getOwner() public view returns (address) {
     return owner;
 }
+
+### ERC165 supportsInterface
+
+```solidity
+function supportsInterface(bytes4 interfaceId) public view virtual returns (bool) {
+    return interfaceId == 0x01ffc9a7; // ERC165
+}
