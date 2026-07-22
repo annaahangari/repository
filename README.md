@@ -282,3 +282,10 @@ function getPausedStatus() public view returns (bool) {
 function isOwner(address account) public view returns (bool) {
     return account == owner;
 }
+
+### Get Contract Balance
+
+```solidity
+function getContractBalance() public view returns (uint256) {
+    return address(this).balance;
+}
