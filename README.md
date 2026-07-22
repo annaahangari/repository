@@ -247,3 +247,10 @@ string public version = "1.0";
 function getVersion() public pure returns (string memory) {
     return version;
 }
+
+### Is Owner View
+
+```solidity
+function isOwner(address account) public view returns (bool) {
+    return account == owner;
+}
