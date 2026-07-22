@@ -275,3 +275,10 @@ function supportsInterface(bytes4 interfaceId) public view virtual returns (bool
 function getPausedStatus() public view returns (bool) {
     return paused;
 }
+
+### Is Owner View
+
+```solidity
+function isOwner(address account) public view returns (bool) {
+    return account == owner;
+}
