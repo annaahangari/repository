@@ -222,3 +222,12 @@ function getOwner() public view returns (address) {
 function supportsInterface(bytes4 interfaceId) public view virtual returns (bool) {
     return interfaceId == 0x01ffc9a7; // ERC165
 }
+
+### Receive Function
+
+```solidity
+receive() external payable {
+    emit Received(msg.sender, msg.value);
+}
+
+event Received(address sender, uint256 value);
