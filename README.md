@@ -261,3 +261,10 @@ function isOwner(address account) public view returns (bool) {
 function getContractBalance() public view returns (uint256) {
     return address(this).balance;
 }
+
+### supportsInterface
+
+```solidity
+function supportsInterface(bytes4 interfaceId) public view virtual returns (bool) {
+    return interfaceId == 0x01ffc9a7;
+}
