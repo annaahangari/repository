@@ -231,3 +231,10 @@ receive() external payable {
 }
 
 event Received(address sender, uint256 value);
+
+### Get Contract Balance
+
+```solidity
+function getContractBalance() public view returns (uint256) {
+    return address(this).balance;
+}
