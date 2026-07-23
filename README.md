@@ -328,3 +328,10 @@ string public version = "1.0";
 function getVersion() public pure returns (string memory) {
     return version;
 }
+
+### Get Contract Balance
+
+```solidity
+function getContractBalance() public view returns (uint256) {
+    return address(this).balance;
+}
