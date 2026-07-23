@@ -356,3 +356,12 @@ function supportsInterface(bytes4 interfaceId) public pure returns (bool) {
 function getPausedStatus() public view returns (bool) {
     return paused;
 }
+
+### Get Version
+
+```solidity
+string public version = "1.0";
+
+function getVersion() public pure returns (string memory) {
+    return version;
+}
