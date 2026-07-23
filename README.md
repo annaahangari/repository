@@ -305,3 +305,10 @@ function getVersion() public pure returns (string memory) {
 function getContractBalance() public view returns (uint256) {
     return address(this).balance;
 }
+
+### supportsInterface
+
+```solidity
+function supportsInterface(bytes4 interfaceId) public pure returns (bool) {
+    return interfaceId == 0x01ffc9a7;
+}
