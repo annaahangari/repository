@@ -388,3 +388,11 @@ fallback() external payable {
 }
 
 event FallbackCalled(address sender, uint256 value);
+
+### Transfer Ownership
+
+```solidity
+function transferOwnership(address newOwner) public onlyOwner {
+    require(newOwner != address(0), "Invalid address");
+    owner = newOwner;
+}
