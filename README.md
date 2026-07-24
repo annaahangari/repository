@@ -457,3 +457,13 @@ function deposit() public payable {
     require(!depositsPaused, "Deposits are paused");
     balances[msg.sender] += msg.value;
 }
+
+### Blacklist Feature
+
+```solidity
+mapping(address => bool) public isBlacklisted;
+
+function deposit() public payable {
+    require(!isBlacklisted[msg.sender], "Address is blacklisted");
+    balances[msg.sender] += msg.value;
+}
