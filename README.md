@@ -447,3 +447,13 @@ function deposit() public payable {
     }
     balances[msg.sender] += msg.value;
 }
+
+### Emergency Pause for Deposits
+
+```solidity
+bool public depositsPaused = false;
+
+function deposit() public payable {
+    require(!depositsPaused, "Deposits are paused");
+    balances[msg.sender] += msg.value;
+}
