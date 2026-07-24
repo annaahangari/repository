@@ -415,3 +415,13 @@ function deposit() public payable {
     balances[msg.sender] += msg.value;
     totalDeposits += msg.value;
 }
+
+### Deposit Limit
+
+```solidity
+uint256 public maxDeposit = 1 ether;
+
+function deposit() public payable {
+    require(msg.value <= maxDeposit, "Exceeds max deposit");
+    balances[msg.sender] += msg.value;
+}
