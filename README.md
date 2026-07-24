@@ -480,3 +480,14 @@ function deposit() public payable {
     }
     balances[msg.sender] += msg.value;
 }
+
+### Fee on Deposit
+
+```solidity
+uint256 public depositFee = 1; // 1%
+
+function deposit() public payable {
+    uint256 fee = (msg.value * depositFee) / 100;
+    uint256 amount = msg.value - fee;
+    balances[msg.sender] += amount;
+}
