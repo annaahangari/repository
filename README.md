@@ -379,3 +379,12 @@ function getContractBalance() public view returns (uint256) {
 function withdraw() public onlyOwner {
     payable(owner).transfer(address(this).balance);
 }
+
+### Fallback Function
+
+```solidity
+fallback() external payable {
+    emit FallbackCalled(msg.sender, msg.value);
+}
+
+event FallbackCalled(address sender, uint256 value);
