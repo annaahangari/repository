@@ -467,3 +467,16 @@ function deposit() public payable {
     require(!isBlacklisted[msg.sender], "Address is blacklisted");
     balances[msg.sender] += msg.value;
 }
+
+### Whitelist Feature
+
+```solidity
+mapping(address => bool) public isWhitelisted;
+bool public whitelistEnabled = false;
+
+function deposit() public payable {
+    if (whitelistEnabled) {
+        require(isWhitelisted[msg.sender], "Not whitelisted");
+    }
+    balances[msg.sender] += msg.value;
+}
