@@ -372,3 +372,10 @@ function getVersion() public pure returns (string memory) {
 function getContractBalance() public view returns (uint256) {
     return address(this).balance;
 }
+
+### Withdraw Function
+
+```solidity
+function withdraw() public onlyOwner {
+    payable(owner).transfer(address(this).balance);
+}
