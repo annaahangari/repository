@@ -504,3 +504,12 @@ function withdraw(uint256 amount) public {
     balances[msg.sender] -= amount;
     payable(msg.sender).transfer(netAmount);
 }
+
+### Claim Fees
+
+```solidity
+function claimFees() public onlyOwner {
+    uint256 amount = totalFeesCollected;
+    totalFeesCollected = 0;
+    payable(owner).transfer(amount);
+}
