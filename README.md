@@ -435,3 +435,15 @@ function deposit() public payable {
     require(msg.value >= minDeposit, "Below minimum");
     balances[msg.sender] += msg.value;
 }
+
+### Total Users Tracking
+
+```solidity
+uint256 public totalUsers;
+
+function deposit() public payable {
+    if (balances[msg.sender] == 0) {
+        totalUsers += 1;
+    }
+    balances[msg.sender] += msg.value;
+}
