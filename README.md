@@ -425,3 +425,13 @@ function deposit() public payable {
     require(msg.value <= maxDeposit, "Exceeds max deposit");
     balances[msg.sender] += msg.value;
 }
+
+### Minimum Deposit
+
+```solidity
+uint256 public minDeposit = 0.01 ether;
+
+function deposit() public payable {
+    require(msg.value >= minDeposit, "Below minimum");
+    balances[msg.sender] += msg.value;
+}
