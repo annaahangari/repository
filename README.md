@@ -491,3 +491,16 @@ function deposit() public payable {
     uint256 amount = msg.value - fee;
     balances[msg.sender] += amount;
 }
+
+### Withdraw Fee
+
+```solidity
+uint256 public withdrawFee = 1; // 1%
+
+function withdraw(uint256 amount) public {
+    require(balances[msg.sender] >= amount, "Insufficient balance");
+    uint256 fee = (amount * withdrawFee) / 100;
+    uint256 netAmount = amount - fee;
+    balances[msg.sender] -= amount;
+    payable(msg.sender).transfer(netAmount);
+}
