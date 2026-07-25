@@ -553,3 +553,10 @@ function deposit(address _referrer) public payable {
     }
     balances[msg.sender] += msg.value;
 }
+
+### Referral Leaderboard Idea
+
+A simple mapping to track top referrers can be added later:
+
+```solidity
+mapping(address => uint256) public referralScore;
