@@ -537,3 +537,19 @@ function claimReferralRewards() public {
     pendingReferralRewards[msg.sender] = 0;
     payable(msg.sender).transfer(reward);
 }
+
+### Max Referral Reward Limit
+
+```solidity
+uint256 public maxReferralReward = 0.1 ether;
+
+function deposit(address _referrer) public payable {
+    if (referrer[msg.sender] != address(0)) {
+        uint256 reward = (msg.value * referralReward) / 100;
+        if (reward > maxReferralReward) {
+            reward = maxReferralReward;
+        }
+        pendingReferralRewards[referrer[msg.sender]] += reward;
+    }
+    balances[msg.sender] += msg.value;
+}
