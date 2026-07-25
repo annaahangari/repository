@@ -525,3 +525,15 @@ function deposit(address _referrer) public payable {
     }
     balances[msg.sender] += msg.value;
 }
+
+### Claim Referral Rewards
+
+```solidity
+mapping(address => uint256) public pendingReferralRewards;
+
+function claimReferralRewards() public {
+    uint256 reward = pendingReferralRewards[msg.sender];
+    require(reward > 0, "No rewards");
+    pendingReferralRewards[msg.sender] = 0;
+    payable(msg.sender).transfer(reward);
+}
