@@ -513,3 +513,15 @@ function claimFees() public onlyOwner {
     totalFeesCollected = 0;
     payable(owner).transfer(amount);
 }
+
+### Basic Referral System
+
+```solidity
+mapping(address => address) public referrer;
+
+function deposit(address _referrer) public payable {
+    if (referrer[msg.sender] == address(0) && _referrer != msg.sender) {
+        referrer[msg.sender] = _referrer;
+    }
+    balances[msg.sender] += msg.value;
+}
