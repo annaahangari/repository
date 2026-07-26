@@ -621,3 +621,14 @@ function compound() public {
     pendingStakeRewards[msg.sender] = 0;
     stakedAmount[msg.sender] += reward;
 }
+
+### Total Staked Tracking
+
+```solidity
+uint256 public totalStaked;
+
+function stake() public payable {
+    stakedAmount[msg.sender] += msg.value;
+    totalStaked += msg.value;
+    stakeTimestamp[msg.sender] = block.timestamp;
+}
