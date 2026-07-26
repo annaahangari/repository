@@ -571,3 +571,15 @@ function stake() public payable {
     stakedAmount[msg.sender] += msg.value;
     stakeTimestamp[msg.sender] = block.timestamp;
 }
+
+### Claim Staking Rewards
+
+```solidity
+mapping(address => uint256) public pendingStakeRewards;
+
+function claimStakeRewards() public {
+    uint256 reward = pendingStakeRewards[msg.sender];
+    require(reward > 0, "No rewards");
+    pendingStakeRewards[msg.sender] = 0;
+    payable(msg.sender).transfer(reward);
+}
