@@ -560,3 +560,14 @@ A simple mapping to track top referrers can be added later:
 
 ```solidity
 mapping(address => uint256) public referralScore;
+
+### Simple Staking Idea
+
+```solidity
+mapping(address => uint256) public stakedAmount;
+mapping(address => uint256) public stakeTimestamp;
+
+function stake() public payable {
+    stakedAmount[msg.sender] += msg.value;
+    stakeTimestamp[msg.sender] = block.timestamp;
+}
