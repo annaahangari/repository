@@ -668,3 +668,14 @@ function stake() public payable {
     stakedAmount[msg.sender] += msg.value;
     totalStaked += msg.value;
 }
+
+### Stake Count per User
+
+```solidity
+mapping(address => uint256) public stakeCount;
+
+function stake() public payable {
+    stakedAmount[msg.sender] += msg.value;
+    stakeCount[msg.sender] += 1;
+    totalStaked += msg.value;
+}
