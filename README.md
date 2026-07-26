@@ -612,3 +612,12 @@ function unstake(uint256 amount) public {
     stakedAmount[msg.sender] -= amount;
     payable(msg.sender).transfer(amount - penalty);
 }
+
+### Auto-Compound Idea
+
+```solidity
+function compound() public {
+    uint256 reward = calculateReward(msg.sender);
+    pendingStakeRewards[msg.sender] = 0;
+    stakedAmount[msg.sender] += reward;
+}
