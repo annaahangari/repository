@@ -595,3 +595,20 @@ function unstake(uint256 amount) public {
     stakedAmount[msg.sender] -= amount;
     payable(msg.sender).transfer(amount);
 }
+
+### Early Unstake Penalty
+
+```solidity
+uint256 public earlyPenalty = 10; // 10%
+
+function unstake(uint256 amount) public {
+    require(stakedAmount[msg.sender] >= amount, "Not enough");
+    
+    uint256 penalty = 0;
+    if (block.timestamp < stakeTimestamp[msg.sender] + lockPeriod) {
+        penalty = (amount * earlyPenalty) / 100;
+    }
+    
+    stakedAmount[msg.sender] -= amount;
+    payable(msg.sender).transfer(amount - penalty);
+}
