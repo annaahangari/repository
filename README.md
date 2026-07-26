@@ -657,3 +657,14 @@ function unstake(uint256 amount) public {
     payable(msg.sender).transfer(amount);
     emit Unstaked(msg.sender, amount);
 }
+
+### Minimum Stake Amount
+
+```solidity
+uint256 public minStake = 0.01 ether;
+
+function stake() public payable {
+    require(msg.value >= minStake, "Below minimum stake");
+    stakedAmount[msg.sender] += msg.value;
+    totalStaked += msg.value;
+}
