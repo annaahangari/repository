@@ -679,3 +679,14 @@ function stake() public payable {
     stakeCount[msg.sender] += 1;
     totalStaked += msg.value;
 }
+
+### Pause Staking
+
+```solidity
+bool public stakingPaused = false;
+
+function stake() public payable {
+    require(!stakingPaused, "Staking is paused");
+    stakedAmount[msg.sender] += msg.value;
+    totalStaked += msg.value;
+}
