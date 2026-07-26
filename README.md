@@ -690,3 +690,14 @@ function stake() public payable {
     stakedAmount[msg.sender] += msg.value;
     totalStaked += msg.value;
 }
+
+### Blacklist for Staking
+
+```solidity
+mapping(address => bool) public isStakeBlacklisted;
+
+function stake() public payable {
+    require(!isStakeBlacklisted[msg.sender], "Address blacklisted");
+    stakedAmount[msg.sender] += msg.value;
+    totalStaked += msg.value;
+}
