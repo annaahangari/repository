@@ -583,3 +583,15 @@ function claimStakeRewards() public {
     pendingStakeRewards[msg.sender] = 0;
     payable(msg.sender).transfer(reward);
 }
+
+### Lock Period for Staking
+
+```solidity
+uint256 public lockPeriod = 7 days;
+
+function unstake(uint256 amount) public {
+    require(block.timestamp >= stakeTimestamp[msg.sender] + lockPeriod, "Still locked");
+    require(stakedAmount[msg.sender] >= amount, "Not enough");
+    stakedAmount[msg.sender] -= amount;
+    payable(msg.sender).transfer(amount);
+}
