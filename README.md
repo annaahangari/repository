@@ -644,3 +644,16 @@ function stake() public payable {
     totalStakeTime += block.timestamp;
     totalStakeActions += 1;
 }
+
+### Unstake Event
+
+```solidity
+event Unstaked(address indexed user, uint256 amount);
+
+function unstake(uint256 amount) public {
+    require(stakedAmount[msg.sender] >= amount, "Not enough");
+    stakedAmount[msg.sender] -= amount;
+    totalStaked -= amount;
+    payable(msg.sender).transfer(amount);
+    emit Unstaked(msg.sender, amount);
+}
