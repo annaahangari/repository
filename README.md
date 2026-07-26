@@ -632,3 +632,15 @@ function stake() public payable {
     totalStaked += msg.value;
     stakeTimestamp[msg.sender] = block.timestamp;
 }
+
+### Average Stake Time Idea
+
+```solidity
+uint256 public totalStakeTime;
+uint256 public totalStakeActions;
+
+function stake() public payable {
+    // existing code
+    totalStakeTime += block.timestamp;
+    totalStakeActions += 1;
+}
