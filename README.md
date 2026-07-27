@@ -781,3 +781,16 @@ function getLockMultiplier(uint256 duration) public pure returns (uint256) {
     if (duration >= 30 days) return 120;
     return 100;
 }
+
+### Early Unlock with Higher Penalty
+
+```solidity
+function earlyUnlock() public {
+    require(stakedAmount[msg.sender] > 0, "Nothing staked");
+    uint256 amount = stakedAmount[msg.sender];
+    uint256 penalty = (amount * 20) / 100; // 20% penalty
+    stakedAmount[msg.sender] = 0;
+    totalStaked -= amount;
+    totalPenaltiesCollected += penalty;
+    payable(msg.sender).transfer(amount - penalty);
+}
