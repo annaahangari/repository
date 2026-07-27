@@ -794,3 +794,17 @@ function earlyUnlock() public {
     totalPenaltiesCollected += penalty;
     payable(msg.sender).transfer(amount - penalty);
 }
+
+### Auto-Extend Lock Option
+
+```solidity
+mapping(address => bool) public autoExtend;
+
+function setAutoExtend(bool status) public {
+    autoExtend[msg.sender] = status;
+}
+
+function extendLock() public {
+    require(autoExtend[msg.sender], "Auto-extend not enabled");
+    stakeTimestamp[msg.sender] = block.timestamp;
+}
