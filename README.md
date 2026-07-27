@@ -833,3 +833,26 @@ function claimStakeRewards() public {
     totalRewardsDistributed += reward;
     payable(msg.sender).transfer(reward);
 }
+
+### Daily Reward Limit
+
+```solidity
+mapping(address => uint256) public dailyClaimed;
+mapping(address => uint256) public lastClaimDay;
+
+uint256 public maxDailyReward = 0.1 ether;
+
+function claimStakeRewards() public {
+    uint256 today = block.timestamp / 1 days;
+    if (lastClaimDay[msg.sender] < today) {
+        dailyClaimed[msg.sender] = 0;
+        lastClaimDay[msg.sender] = today;
+    }
+    
+    uint256 reward = pendingStakeRewards[msg.sender];
+    if (dailyClaimed[msg.sender] + reward > maxDailyReward) {
+        reward = maxDailyReward - dailyClaimed[msg.sender];
+    }
+    
+    // claim logic...
+}
