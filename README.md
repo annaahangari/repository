@@ -768,3 +768,16 @@ function calculateReward(address user) public view returns (uint256) {
     }
     return baseReward;
 }
+
+### Multiple Lock Tiers
+
+```solidity
+uint256 public shortLock = 7 days;
+uint256 public mediumLock = 30 days;
+uint256 public longLock = 90 days;
+
+function getLockMultiplier(uint256 duration) public pure returns (uint256) {
+    if (duration >= 90 days) return 150;
+    if (duration >= 30 days) return 120;
+    return 100;
+}
