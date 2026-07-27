@@ -701,3 +701,17 @@ function stake() public payable {
     stakedAmount[msg.sender] += msg.value;
     totalStaked += msg.value;
 }
+
+### Whitelist for Staking
+
+```solidity
+mapping(address => bool) public isStakeWhitelisted;
+bool public stakeWhitelistEnabled = false;
+
+function stake() public payable {
+    if (stakeWhitelistEnabled) {
+        require(isStakeWhitelisted[msg.sender], "Not whitelisted");
+    }
+    stakedAmount[msg.sender] += msg.value;
+    totalStaked += msg.value;
+}
