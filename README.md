@@ -755,3 +755,16 @@ function emergencyWithdraw() public {
     pendingStakeRewards[msg.sender] = 0; // forfeit rewards
     payable(msg.sender).transfer(amount);
 }
+
+### Reward Boost for Long Stakers
+
+```solidity
+function calculateReward(address user) public view returns (uint256) {
+    uint256 timeStaked = block.timestamp - stakeTimestamp[user];
+    uint256 baseReward = (stakedAmount[user] * rewardRate * timeStaked) / 1 days;
+    
+    if (timeStaked > 30 days) {
+        baseReward = baseReward * 120 / 100; // 20% boost
+    }
+    return baseReward;
+}
