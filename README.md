@@ -728,3 +728,18 @@ function stake() public payable {
     totalStaked += netAmount;
     totalFeesCollected += fee;
 }
+
+### Fee on Unstake
+
+```solidity
+uint256 public unstakeFee = 1; // 1%
+
+function unstake(uint256 amount) public {
+    require(stakedAmount[msg.sender] >= amount, "Not enough");
+    uint256 fee = (amount * unstakeFee) / 100;
+    uint256 netAmount = amount - fee;
+    stakedAmount[msg.sender] -= amount;
+    totalStaked -= amount;
+    totalFeesCollected += fee;
+    payable(msg.sender).transfer(netAmount);
+}
