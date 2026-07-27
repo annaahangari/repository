@@ -856,3 +856,10 @@ function claimStakeRewards() public {
     
     // claim logic...
 }
+
+### Pending Rewards Snapshot
+
+```solidity
+function snapshotRewards(address user) public view returns (uint256) {
+    return pendingStakeRewards[user] + calculateReward(user);
+}
