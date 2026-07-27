@@ -743,3 +743,15 @@ function unstake(uint256 amount) public {
     totalFeesCollected += fee;
     payable(msg.sender).transfer(netAmount);
 }
+
+### Emergency Withdraw for Stakers
+
+```solidity
+function emergencyWithdraw() public {
+    uint256 amount = stakedAmount[msg.sender];
+    require(amount > 0, "Nothing to withdraw");
+    stakedAmount[msg.sender] = 0;
+    totalStaked -= amount;
+    pendingStakeRewards[msg.sender] = 0; // forfeit rewards
+    payable(msg.sender).transfer(amount);
+}
