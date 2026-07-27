@@ -820,3 +820,16 @@ function calculateReward(address user) public view returns (uint256) {
     }
     return base;
 }
+
+### Total Rewards Distributed
+
+```solidity
+uint256 public totalRewardsDistributed;
+
+function claimStakeRewards() public {
+    uint256 reward = pendingStakeRewards[msg.sender];
+    require(reward > 0, "No rewards");
+    pendingStakeRewards[msg.sender] = 0;
+    totalRewardsDistributed += reward;
+    payable(msg.sender).transfer(reward);
+}
