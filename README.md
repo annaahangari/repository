@@ -715,3 +715,16 @@ function stake() public payable {
     stakedAmount[msg.sender] += msg.value;
     totalStaked += msg.value;
 }
+
+### Fee on Stake
+
+```solidity
+uint256 public stakeFee = 1; // 1%
+
+function stake() public payable {
+    uint256 fee = (msg.value * stakeFee) / 100;
+    uint256 netAmount = msg.value - fee;
+    stakedAmount[msg.sender] += netAmount;
+    totalStaked += netAmount;
+    totalFeesCollected += fee;
+}
