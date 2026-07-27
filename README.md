@@ -808,3 +808,15 @@ function extendLock() public {
     require(autoExtend[msg.sender], "Auto-extend not enabled");
     stakeTimestamp[msg.sender] = block.timestamp;
 }
+
+### Referral Boost for Stakers
+
+```solidity
+function calculateReward(address user) public view returns (uint256) {
+    uint256 base = (stakedAmount[user] * rewardRate * (block.timestamp - stakeTimestamp[user])) / 1 days;
+    
+    if (referralCount[user] >= 5) {
+        base = base * 110 / 100; // 10% boost for active referrers
+    }
+    return base;
+}
