@@ -959,3 +959,14 @@ function burn(uint256 tokenId) public {
     delete ownerOf[tokenId];
     balanceOf[msg.sender] -= 1;
 }
+
+### Batch Mint Idea
+
+```solidity
+function batchMint(uint256 quantity) public {
+    for (uint256 i = 0; i < quantity; i++) {
+        ownerOf[nextTokenId] = msg.sender;
+        balanceOf[msg.sender] += 1;
+        nextTokenId++;
+    }
+}
