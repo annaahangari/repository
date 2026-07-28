@@ -950,3 +950,12 @@ function mint() public {
     balanceOf[msg.sender] += 1;
     nextTokenId++;
 }
+
+### NFT Burn Function
+
+```solidity
+function burn(uint256 tokenId) public {
+    require(ownerOf[tokenId] == msg.sender, "Not owner");
+    delete ownerOf[tokenId];
+    balanceOf[msg.sender] -= 1;
+}
