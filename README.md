@@ -917,3 +917,15 @@ Using a simple Ownable pattern is good for learning, but for production consider
 ### Project Overview
 
 This repository contains a collection of Solidity examples and patterns useful for building on Base. It covers deposits, staking, referrals, access control, fees, and safety mechanisms.
+
+### Simple NFT Idea
+
+```solidity
+// Basic structure for a future NFT contract
+mapping(uint256 => address) public ownerOf;
+uint256 public nextTokenId;
+
+function mint() public {
+    ownerOf[nextTokenId] = msg.sender;
+    nextTokenId++;
+}
