@@ -939,3 +939,14 @@ function approve(address to, uint256 tokenId) public {
     require(ownerOf[tokenId] == msg.sender, "Not owner");
     tokenApproval[tokenId] = to;
 }
+
+### NFT Balance Tracking
+
+```solidity
+mapping(address => uint256) public balanceOf;
+
+function mint() public {
+    ownerOf[nextTokenId] = msg.sender;
+    balanceOf[msg.sender] += 1;
+    nextTokenId++;
+}
