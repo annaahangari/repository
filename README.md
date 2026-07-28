@@ -884,3 +884,19 @@ Future upgrades may include:
 - Better reward formulas
 - NFT integration for boosts
 - Multi-token support
+
+### Reentrancy Guard Idea
+
+```solidity
+bool private locked;
+
+modifier noReentrant() {
+    require(!locked, "No reentrancy");
+    locked = true;
+    _;
+    locked = false;
+}
+
+function withdraw(uint256 amount) public noReentrant {
+    // safe withdraw logic
+}
