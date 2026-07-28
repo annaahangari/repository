@@ -970,3 +970,15 @@ function batchMint(uint256 quantity) public {
         nextTokenId++;
     }
 }
+
+### Mint Price
+
+```solidity
+uint256 public mintPrice = 0.01 ether;
+
+function mint() public payable {
+    require(msg.value >= mintPrice, "Insufficient payment");
+    ownerOf[nextTokenId] = msg.sender;
+    balanceOf[msg.sender] += 1;
+    nextTokenId++;
+}
