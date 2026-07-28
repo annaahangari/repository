@@ -929,3 +929,13 @@ function mint() public {
     ownerOf[nextTokenId] = msg.sender;
     nextTokenId++;
 }
+
+### NFT Approval Idea
+
+```solidity
+mapping(uint256 => address) public tokenApproval;
+
+function approve(address to, uint256 tokenId) public {
+    require(ownerOf[tokenId] == msg.sender, "Not owner");
+    tokenApproval[tokenId] = to;
+}
