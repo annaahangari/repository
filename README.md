@@ -875,3 +875,12 @@ function getContractStats() public view returns (
 ) {
     return (totalStaked, totalFeesCollected, totalRewardsDistributed, totalUsers);
 }
+
+### Version History Note
+
+Current contract version: 1.0
+
+Future upgrades may include:
+- Better reward formulas
+- NFT integration for boosts
+- Multi-token support
