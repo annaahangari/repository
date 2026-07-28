@@ -913,3 +913,7 @@ Using a simple Ownable pattern is good for learning, but for production consider
 - Blacklist and whitelist controls
 - Pause and emergency functions
 - Multiple view functions for transparency
+
+### Project Overview
+
+This repository contains a collection of Solidity examples and patterns useful for building on Base. It covers deposits, staking, referrals, access control, fees, and safety mechanisms.
