@@ -900,3 +900,7 @@ modifier noReentrant() {
 function withdraw(uint256 amount) public noReentrant {
     // safe withdraw logic
 }
+
+### Ownable Pattern Note
+
+Using a simple Ownable pattern is good for learning, but for production consider OpenZeppelin's Ownable or AccessControl for more flexibility and security.
