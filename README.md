@@ -904,3 +904,12 @@ function withdraw(uint256 amount) public noReentrant {
 ### Ownable Pattern Note
 
 Using a simple Ownable pattern is good for learning, but for production consider OpenZeppelin's Ownable or AccessControl for more flexibility and security.
+
+### Current Features Summary
+
+- Deposit and withdraw with fees
+- Staking with lock periods and rewards
+- Referral system with bonuses
+- Blacklist and whitelist controls
+- Pause and emergency functions
+- Multiple view functions for transparency
