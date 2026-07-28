@@ -863,3 +863,15 @@ function claimStakeRewards() public {
 function snapshotRewards(address user) public view returns (uint256) {
     return pendingStakeRewards[user] + calculateReward(user);
 }
+
+### Contract Stats View
+
+```solidity
+function getContractStats() public view returns (
+    uint256 totalStakedAmount,
+    uint256 totalFees,
+    uint256 totalRewards,
+    uint256 totalUsersCount
+) {
+    return (totalStaked, totalFeesCollected, totalRewardsDistributed, totalUsers);
+}
