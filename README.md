@@ -995,3 +995,12 @@ function mint() public payable {
     balanceOf[msg.sender] += 1;
     nextTokenId++;
 }
+
+### Withdraw Mint Funds
+
+```solidity
+function withdrawFunds() public onlyOwner {
+    uint256 balance = address(this).balance;
+    require(balance > 0, "No funds");
+    payable(owner).transfer(balance);
+}
