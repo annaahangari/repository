@@ -1004,3 +1004,17 @@ function withdrawFunds() public onlyOwner {
     require(balance > 0, "No funds");
     payable(owner).transfer(balance);
 }
+
+### Pause Minting
+
+```solidity
+bool public mintingPaused = false;
+
+function mint() public payable {
+    require(!mintingPaused, "Minting is paused");
+    require(nextTokenId < maxSupply, "Max supply reached");
+    require(msg.value >= mintPrice, "Insufficient payment");
+    ownerOf[nextTokenId] = msg.sender;
+    balanceOf[msg.sender] += 1;
+    nextTokenId++;
+}
